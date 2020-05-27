@@ -1,11 +1,16 @@
 package com.example.capston;
+
+
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import androidx.core.app.ActivityCompat;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Log.i(this.getClass().getName(),"MainActivity 실행 ");
         // 뷰 선언
         mBtnCameraView = (Button) findViewById(R.id.btn_camera);
         mEditOcrResult = (EditText) findViewById(R.id.edit_ocrresult);
@@ -57,18 +62,16 @@ public class MainActivity extends AppCompatActivity {
                 // 버튼 클릭 시
 
                 // Camera 화면 띄우기
-                Intent mIttCamera = new Intent(MainActivity.this, CameraView.class);
+                Intent mIttCamera = new Intent(MainActivity.this, com.example.capston.CameraView.class);
                 startActivityForResult(mIttCamera, ACTIVITY_REQUEST_CODE);
 
             }
         });
     }
 
-
-
     boolean checkFile(File dir)
     {
-        //디렉토리가 없으면 디렉토리를 만들고 그후에 파일을 카피
+        //디렉토리가 없으면 디렉토리를 만들고 그 후에 파일을 카피
         if(!dir.exists() && dir.mkdirs()) {
             copyFiles();
         }
