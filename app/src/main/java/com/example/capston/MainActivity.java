@@ -14,6 +14,10 @@ import androidx.core.app.ActivityCompat;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.LoaderCallbackInterface;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static android.Manifest.permission.CAMERA;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private int ACTIVITY_REQUEST_CODE = 1;
 
     static TessBaseAPI sTess;
+
+    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // 버튼 클릭 시
+                Log.i(this.getClass().getName(),"온클릭 실행 ");
+                Log.i(this.getClass().getName(),"온클릭 실행 ");
+                Log.i(this.getClass().getName(),"온클릭 실행 ");
+                Log.i(this.getClass().getName(),"온클릭 실행 ");
+                Log.i(this.getClass().getName(),"온클릭 실행 ");
 
                 // Camera 화면 띄우기
                 Intent mIttCamera = new Intent(MainActivity.this, com.example.capston.CameraView.class);

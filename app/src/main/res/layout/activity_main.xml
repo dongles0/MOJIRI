@@ -8,23 +8,61 @@
 
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:background="@mipmap/temp_image"
+        >
+
+    </LinearLayout>
+
     <org.opencv.android.JavaCameraView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         opencv:camera_id="any"
         android:visibility="gone"
         android:id="@+id/activity_surface_view" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_cmr"
+            android:backgroundTintMode="multiply"
+            android:text="카메라" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_translate"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_cmr"
+
+        android:text="번역하기" />
+
+    <Button
+        android:id="@+id/btn_sound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_cmr"
+        android:text="음성 변환하기" />
+
     <EditText
         android:id="@+id/edit_ocrresult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:hint="@string/ocr_result_tip"
         android:text="" />
-
-    <Button
-        android:id="@+id/btn_camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Camera" />
 
 </LinearLayout>
