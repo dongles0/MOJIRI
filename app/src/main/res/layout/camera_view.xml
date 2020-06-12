@@ -1,4 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:opencv="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".CameraView">-->
+
+
+<!--    <org.opencv.android.JavaCameraView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        opencv:camera_id="any"-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/activity_surface_view_c" />-->
+
+<!--    &lt;!&ndash;ROI 영역&ndash;&gt;-->
+<!--    <SurfaceView-->
+<!--        android:id="@+id/surface_roi_border"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#00ff00" />-->
+
+<!--    <SurfaceView-->
+<!--        android:id="@+id/surface_roi"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#00ff0000" />-->
+
+
+<!--    &lt;!&ndash;Start 및 뒤로가기 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_ocrstart"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:background="#7d010000"-->
+<!--        android:onClick="onClickButton"-->
+<!--        android:text="Start"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="15dp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_finish"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:background="#7d010000"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:onClick="onClickButton"-->
+<!--        android:text="←"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="20dp"-->
+<!--        />-->
+
+<!--    &lt;!&ndash; OCR 결과 및 캡쳐이미지 출력&ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/text_ocrresult"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:text="@string/ocr_result_tip"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="20dp" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image_capture"-->
+<!--        android:layout_width="205dp"-->
+<!--        android:layout_height="365dp"-->
+<!--        android:layout_centerInParent="true" />-->
+
+<!--</LinearLayout>-->
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,23 +89,21 @@
 
     >
 
-    <!--ROI 영역-->
-
     <org.opencv.android.JavaCameraView
-        android:id="@+id/activity_surface_view"
+        android:id="@+id/activity_surface_view_c"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"/>
+    <!--ROI 영역-->
     <SurfaceView
         android:id="@+id/surface_roi_border"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#00ff00" />
 
     <SurfaceView
         android:id="@+id/surface_roi"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#00ff0000" />
 
 
@@ -65,15 +145,13 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:text="@string/ocr_result_tip"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
         android:textSize="20dp" />
 
     <ImageView
         android:id="@+id/image_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
+        android:layout_width="205dp"
+        android:layout_height="365dp"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

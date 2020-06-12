@@ -18,6 +18,7 @@ import android.view.OrientationEventListener;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -151,9 +152,11 @@ public class CameraView extends Activity implements CameraBridgeViewBase.CvCamer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.camera_view);
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+        setContentView(R.layout.camera_view);
 
         if (!hasPermissions(PERMISSIONS)) { //퍼미션 허가를 했었는지 여부를 확인
             requestNecessaryPermissions(PERMISSIONS);//퍼미션 허가안되어 있다면 사용자에게 요청
@@ -162,22 +165,21 @@ public class CameraView extends Activity implements CameraBridgeViewBase.CvCamer
         }
 
         // 카메라 설정
-        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.activity_surface_view);
+
+        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.activity_surface_view_c);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
         mOpenCvCameraView.setCameraIndex(0); // front-camera(1),  back-camera(0)
+       // mOpenCvCameraView.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);
         mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
 
 
         //뷰 선언
         mBtnOcrStart = (Button) findViewById(R.id.btn_ocrstart);
         mBtnFinish = (Button) findViewById(R.id.btn_finish);
-
         mTextOcrResult = (TextView) findViewById(R.id.text_ocrresult);
-
         mSurfaceRoi = (SurfaceView) findViewById(R.id.surface_roi);
         mSurfaceRoiBorder = (SurfaceView) findViewById(R.id.surface_roi_border);
-
         mImageCapture = (ImageView) findViewById(R.id.image_capture);
 
         //풀스크린 상태 만들기 (상태바, 네비게이션바 없애고 고정시키기)
@@ -257,7 +259,8 @@ public class CameraView extends Activity implements CameraBridgeViewBase.CvCamer
                     mBtnOcrStart.setEnabled(false);
                     mBtnOcrStart.setText("Working...");
                     mBtnOcrStart.setTextColor(Color.LTGRAY);
-
+                  //  Mat m_matRoi = new Mat();
+               //     Imgproc.cvtColor(m_matRoi, m_matRoi, Imgproc.COLOR_RGBA2GRAY);
                     bmp_result = Bitmap.createBitmap(m_matRoi.cols(), m_matRoi.rows(), Bitmap.Config.ARGB_8888);
 
                     Utils.matToBitmap(m_matRoi, bmp_result);
